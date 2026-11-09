@@ -289,6 +289,7 @@ void CPlayer::Update(void)
 	Move();
 
 	// 角度補正
+
 	m_rot.y = RotFollow(m_rotDest.y, m_rot.y, 0.03f);
 
 	//--- 移動 ---//
