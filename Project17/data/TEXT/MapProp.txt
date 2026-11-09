@@ -1,0 +1,200 @@
+//===================================================================================
+//
+// プロップ配置
+// Author : Nagate
+//
+//===================================================================================
+PROP_SCRIPT
+
+//***********************************************************************************
+// モデル数
+//***********************************************************************************
+NUM_MODEL = 2
+
+//***********************************************************************************
+// モデルファイル名
+//***********************************************************************************
+LOAD_MODELFILE
+
+MODEL_FILENAME = data\\MODEL\\airplane000.x			#[0]🛫
+MODEL_FILENAME = data\\MODEL\\spikeball000.x		#[1]棘ボール
+MODEL_FILENAME = data\\MODEL\\stone.x				#[2]石ころ
+MODEL_FILENAME = data\\MODEL\\Bucket.x				#[3]バケツ
+MODEL_FILENAME = data\\MODEL\\wood_1.2.x			#[4]枝
+MODEL_FILENAME = data\\MODEL\\Shovel.x				#[5]スコップ
+MODEL_FILENAME = data\\MODEL\\wood_small.x			#[6]細い枝4
+MODEL_FILENAME = data\\MODEL\\Shovel_blue.x				#[7]スコップ青
+
+END_MODELFILE
+
+//***********************************************************************************
+// 配置情報
+//***********************************************************************************
+MODEL_SET	
+	SET_PLAYER
+		POS = 10.0 20.0 10.0
+		ROT = 0.0 1.57 0.0
+	END_PLAYERSET
+#===================================================================================
+# マップのオブジェクト設置
+#===================================================================================
+	SET_OBJECT			#[０]
+		MODELNUMBER = 2
+		POS = -300.0 0.0 -500.0
+		ROT = 0.0 0.0 0.0
+	END_OBJECT
+	
+	#左上三角置
+	SET_OBJECT			#[０]
+		MODELNUMBER = 2
+		POS = -350.0 0.0 500.0
+		ROT = 0.0 0.0 0.0
+	END_OBJECT
+	
+	SET_OBJECT			#[１]
+		MODELNUMBER = 2
+		POS = -550.0 0.0 150.0
+		ROT = 0.0 0.0 0.0
+	END_OBJECT
+	
+	SET_OBJECT			#[２]
+		MODELNUMBER = 2
+		POS = -150.0 0.0 150.0
+		ROT = 0.0 0.0 0.0
+	END_OBJECT
+	
+#＝＝＝＝＝＝＝＝＝＝＝＝バケツ＝＝＝＝＝＝＝＝＝＝＝＝＝
+	SET_OBJECT			#[０]
+		MODELNUMBER = 3
+		POS = 250.0 0.0 -500.0
+		ROT = 0.0 0.0 0.0
+	END_OBJECT
+	
+#＝＝＝＝＝＝＝＝＝＝＝＝＝木＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	SET_BOXOBJECT		#[0]
+		MODELNUMBER = 4
+		POS = -500.0 80.0 -420.0
+		ROT = 0.0 -1.57 0.0
+		SIZE = 85.0 200.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[1]
+		MODELNUMBER = 4
+		POS = 400.0 80.0 420.0
+		ROT = 0.0 0.0 0.0
+		SIZE = 200.0 85.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[0]
+		MODELNUMBER = 6
+		POS = 400.0 10.0 200.0
+		ROT = 0.0 3.14 0.0
+		SIZE = 180.0 15.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[１]
+		MODELNUMBER = 6
+		POS = 400.0 10.0 0.0
+		ROT = 0.6 0.0 0.0
+		SIZE = 180.0 15.0
+	END_BOXOBJECT
+	
+#＝＝＝＝＝＝＝＝＝＝＝スコップ＝＝＝＝＝＝＝＝＝＝＝＝＝
+	SET_BOXOBJECT		#[0]
+		MODELNUMBER = 5
+		POS = 0.0 -30.0 -200.0
+		ROT = 0.0 0.0 0.3
+		SIZE = 45.0 10.0
+	END_BOXOBJECT
+#右下塊
+	SET_BOXOBJECT		#[１]
+		MODELNUMBER = 5
+		POS = 550.0 -30.0 -500.0
+		ROT = 0.0 1.54 0.1
+		SIZE = 10.0 45.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[２]
+		MODELNUMBER = 7
+		POS = 550.0 -30.0 -410.0
+		ROT = -0.3 1.5 0.1
+		SIZE = 10.0 35.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[３]
+		MODELNUMBER = 7
+		POS = 530.0 -30.0 -320.0
+		ROT = -0.3 1.4 -0.3
+		SIZE = 10.0 35.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[４]
+		MODELNUMBER = 5
+		POS = 250.0 0.0 -390.0
+		ROT = -0.3 -1.4 -0.4
+		SIZE = 20.0 50.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[５]
+		MODELNUMBER = 7
+		POS = 310.0 -30.0 -290.0
+		ROT = 0.0 -0.4 0.0
+		SIZE = 35.0 20.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[６]
+		MODELNUMBER = 5
+		POS = 400.0 -30.0 -270.0
+		ROT = 0.0 0.0 0.0
+		SIZE = 50.0 10.0
+	END_BOXOBJECT
+	
+	SET_BOXOBJECT		#[７]
+		MODELNUMBER = 7
+		POS = 470.0 -30.0 -270.0
+		ROT = -0.3 0.2 -0.3
+		SIZE = 35.0 10.0
+	END_BOXOBJECT
+#===================================================================================
+# 壁設置
+#===================================================================================
+	SET_WALL			#[0]
+		POS = 0.0 750.0 750.0
+		ROT = 0.0 0.0 0.0
+		SIZE = 1500.0 1500.0 0.0
+		TEXID = 1
+	END_WALLSET
+	
+	SET_WALL			#[1]
+		POS = 0.0 750.0 -750.0
+		ROT = 0.0 180.0 0.0
+		SIZE = 1500.0 1500.0 0.0
+		TEXID = 1
+	END_WALLSET
+	
+	SET_WALL			#[2]
+		POS = 750.0 750.0 0.0
+		ROT = 0.0 90.0 0.0
+		SIZE = 1500.0 1500.0 0.0
+		TEXID = 1
+	END_WALLSET
+	
+	SET_WALL			#[3]
+		POS = -750.0 750.0 0.0
+		ROT = 0.0 -90.0 0.0
+		SIZE = 1500.0 1500.0 0.0
+		TEXID = 1
+	END_WALLSET
+	
+#===================================================================================
+# 床設置
+#===================================================================================
+	SET_FIELD			#[0]
+		POS = 0.0 -0.0 -0.0
+		SIZE = 1500.0 0.0 1500.0
+		TEXID = 2
+	END_FIELDSET
+	
+END_MODELSET
+
+END_SCRIPT

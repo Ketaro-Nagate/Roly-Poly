@@ -1,0 +1,75 @@
+﻿  billboard.cpp
+  camera.cpp
+  DebugProc.cpp
+  effect.cpp
+  effect_model.cpp
+  enemy.cpp
+  enemy_bird.cpp
+  enemy_manager.cpp
+  fade.cpp
+  field.cpp
+  game.cpp
+  input.cpp
+  item.cpp
+  item_manager.cpp
+  light.cpp
+  main.cpp
+  manager.cpp
+  number.cpp
+  object.cpp
+  object2D.cpp
+  コンパイル中...
+  object3D.cpp
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\object3D.cpp(514,21): warning C4101: 'pTextureMT': ローカル変数は 1 度も使われていません。
+  objectX.cpp
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\objectX.cpp(106,32): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\objectX.cpp(146,32): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  object_ball.cpp
+  object_cube.cpp
+  orbit.cpp
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\orbit.cpp(24,18): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+  particle.cpp
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\particle.cpp(25,18): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\particle.cpp(122,15): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\particle.cpp(123,15): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\particle.cpp(124,15): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+  particle_model.cpp
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\particle_model.cpp(25,18): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\particle_model.cpp(114,53): warning C4244: '引数': 'float' から '_Ty' への変換です。データが失われる可能性があります。
+          with
+          [
+              _Ty=int
+          ]
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\particle_model.cpp(114,42): warning C4244: '引数': 'float' から '_Ty' への変換です。データが失われる可能性があります。
+          with
+          [
+              _Ty=int
+          ]
+  player.cpp
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\player.cpp(28,1): warning C4005: 'MAX_TEXTURE': マクロが再定義されました。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\texture.h(19): message : 'MAX_TEXTURE' の以前の定義を確認してください
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\player.cpp(138,32): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\player.cpp(191,32): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\player.cpp(307,27): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\player.cpp(311,27): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\player.cpp(317,26): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\player.cpp(321,26): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+  prop.cpp
+  ranking.cpp
+  renderer.cpp
+  scene.cpp
+  score.cpp
+  tcp_client.cpp
+  texture.cpp
+  title.cpp
+  util.cpp
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\util.cpp(247,15): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\util.cpp(248,15): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\2WDW\017_OnemonthCreate\開発環境\Project17\util.cpp(249,15): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+  wall.cpp
+  コード生成しています。
+  913 of 929 functions (98.3%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  Project17.vcxproj -> C:\2WDW\017_OnemonthCreate\開発環境\Project17\Project17.exe

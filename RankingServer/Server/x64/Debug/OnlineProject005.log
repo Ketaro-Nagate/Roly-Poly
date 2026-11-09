@@ -1,0 +1,4 @@
+﻿  tcp_listener.cpp
+C:\2WDW\#001オンライン\OnlineProject008_Ranking\Server\tcp_listener.cpp(139,15): warning C4101: 'send': ローカル変数は 1 度も使われていません。
+  LINK : 前回のインクリメンタル リンクで C:\2WDW\#001オンライン\OnlineProject008_Ranking\Server\OnlineProject005.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+  OnlineProject005.vcxproj -> C:\2WDW\#001オンライン\OnlineProject008_Ranking\Server\OnlineProject005.exe

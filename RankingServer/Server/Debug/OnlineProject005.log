@@ -1,0 +1,6 @@
+﻿  mian.cpp
+  tcp_client.cpp
+  tcp_listener.cpp
+  コードを生成中...
+C:\2WDW\#001バイトデータの操作\OnlineProject005&&006\Server\tcp_client.cpp(71): warning C4715: 'CTcpClient::Init': 値を返さないコントロール パスがあります。
+  OnlineProject005.vcxproj -> C:\2WDW\#001バイトデータの操作\OnlineProject005&&006\Server\OnlineProject005.exe

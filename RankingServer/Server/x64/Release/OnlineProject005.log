@@ -1,0 +1,7 @@
+﻿  tcp_listener.cpp
+C:\2WDW\#001オンライン\OnlineProject008_Ranking\Server\tcp_listener.cpp(139,15): warning C4101: 'send': ローカル変数は 1 度も使われていません。
+  コード生成しています。
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 667 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  コード生成が終了しました。
+  OnlineProject005.vcxproj -> C:\2WDW\#001オンライン\OnlineProject008_Ranking\Server\OnlineProject005.exe
