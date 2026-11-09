@@ -71,12 +71,6 @@ float RotFollow(float Dest, float Now, float speed)
 {
 	float Diff = Dest - Now;			// C³–Ú•W‚ÆŒ»Ý’l‚Ì·
 
-	/*if (Diff > D3DX_PI - 0.1f ||
-		Diff < -D3DX_PI + 0.1f)
-	{
-		return Dest;
-	}*/
-
 	if (Diff > D3DX_PI)					// Diff‚Å‰ñ“]‚ÌŒü‚«‚ðŒˆ‚ß‚é
 	{
 		Diff = Diff - D3DX_PI * 2.0f;

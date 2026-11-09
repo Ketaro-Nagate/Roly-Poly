@@ -101,6 +101,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInstancePrev, LPSTR lpCmdLine
 	//‰Šú‰»ˆ—
 	if (FAILED(pManager->Init(hInstance, hWnd, TRUE)))
 	{//‰Šú‰»ˆ—‚É¸”s‚µ‚½ê‡
+		if (pManager != nullptr)
+			delete pManager;
 		return -1;
 	}
 

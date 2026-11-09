@@ -288,9 +288,21 @@ void CPlayer::Update(void)
 	//-------- 移動処理 --------//
 	Move();
 
-	// 角度補正
+	// 補正確度を求める
+	float fRotDiff = RotCorrection(m_rotDest.y - m_rot.y);
 
-	m_rot.y = RotFollow(m_rotDest.y, m_rot.y, 0.03f);
+	// 角度補正
+	if (fRotDiff >= D3DX_PI / 1.05f || fRotDiff <= -D3DX_PI / 1.05f)
+	{
+		// 角度差が90度以上なら即座に変更
+		m_rot.y = m_rotDest.y;
+		m_fValueRot *= -1.0f;
+	}
+	else
+	{
+		// それ以外は徐々に近づける
+		m_rot.y = RotFollow(m_rotDest.y, m_rot.y, 0.05f);
+	}
 
 	//--- 移動 ---//
 	m_pos += m_move;

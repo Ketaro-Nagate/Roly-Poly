@@ -1,10 +1,2 @@
-﻿  player.cpp
-C:\2WDW\018\02_開発環境\Roly-Poly\Project17\player.cpp(28,1): warning C4005: 'MAX_TEXTURE': マクロが再定義されました。
-C:\2WDW\018\02_開発環境\Roly-Poly\Project17\texture.h(19): message : 'MAX_TEXTURE' の以前の定義を確認してください
-C:\2WDW\018\02_開発環境\Roly-Poly\Project17\player.cpp(138,32): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-C:\2WDW\018\02_開発環境\Roly-Poly\Project17\player.cpp(191,32): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-C:\2WDW\018\02_開発環境\Roly-Poly\Project17\player.cpp(308,27): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
-C:\2WDW\018\02_開発環境\Roly-Poly\Project17\player.cpp(312,27): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
-C:\2WDW\018\02_開発環境\Roly-Poly\Project17\player.cpp(318,26): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
-C:\2WDW\018\02_開発環境\Roly-Poly\Project17\player.cpp(322,26): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+﻿  main.cpp
   Project17.vcxproj -> C:\2WDW\018\02_開発環境\Roly-Poly\Project17\Project17.exe
