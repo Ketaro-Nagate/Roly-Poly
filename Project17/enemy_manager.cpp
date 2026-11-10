@@ -13,6 +13,7 @@
 #include "input.h"
 #include <assert.h>
 #include <algorithm>
+#include <string>
 #include "util.h"
 #include "enemy_bird.h"
 
@@ -98,7 +99,7 @@ void CEnemyManager::Update(void)
 	// 生成タイミングを待機
 	if (m_nFrequency == m_nCountCreate)
 	{// 生成
-		//m_vpEnemy.push_back(CEnemyBird::Create())
+		//m_vpEnemy.push_back(CEnemyBird::Create());
 	}
 }
 
@@ -127,4 +128,87 @@ void CEnemyManager::SetLevel(int nFrequency, int nMaxEnemy)
 {
 	m_nFrequency = nFrequency;		// 生成頻度
 	m_nMaxEnemy = nMaxEnemy;		// 最大数
+}
+
+//==================================================================================
+// 敵の設置情報テキスト読み込み
+//==================================================================================
+void CEnemyManager::LoadFile(void)
+{
+#if false
+	std::string line;		// 行データ
+	std::string label;		// ラベル
+	char equal;				// = テスト
+
+	ENEMY_INFO EnemyInfo;		// 一時保存用
+	D3DXVECTOR3 pos;
+
+	//====== ファイルデータを読み込み ======//
+	std::ifstream readfile("data\\TEXT\\ItemManager.txt");
+
+	if (readfile.is_open())
+	{
+		std::cout << "ファイルは開けています\n";
+	}
+
+	// ファイルから読み込み
+	if (readfile.is_open())
+	{
+		if (readfile.eof())
+		{
+			// すでにファイル終端の状態
+			int n = 0;
+		}
+
+		// １行ずつ読み込む
+		while (std::getline(readfile, line))
+		{
+			std::istringstream iss(line);
+
+			// 空行などを除外
+			if (!(iss >> label))
+			{
+				continue;
+			}
+
+			// アイテムの読み込み開始
+			if (label == "SET_PATTERN")
+			{// 次の読み込みに備える
+				EnemyInfo.vpos.clear();
+				EnemyInfo.nNumItem = 0;
+				EnemyInfo.nIdx = -1;
+				continue;
+			}
+
+			// アイテムの生成
+			if (label == "END_PATTERNSET")
+			{
+				// ここでセットパターンを登録する
+				m_vPattern.push_back(PatternInfo);
+				m_nNumPattern++;
+				continue;
+			}
+
+			// 項目名と = を読み込む
+			if (!(iss >> equal) || equal != '=')
+			{
+				continue;
+			}
+
+			if (label == "POS")
+			{// 位置を読み込み
+				iss >> pos.x >> pos.y >> pos.z;
+				PatternInfo.vpos.push_back(pos);		// 値を保存
+				PatternInfo.nNumItem++;					// カウント増
+			}
+			else if (label == "ID")
+			{// インデックスを読み込み
+				iss >> PatternInfo.nIdx;
+			}
+		}
+	}
+
+	// 読み込みファイルを閉じる
+	readfile.close();
+#endif
 }

@@ -43,6 +43,7 @@ public:
 	void Uninit(void);
 	void Update(void);
 	void SetLevel(int nFrequency, int nMaxEnemy);
+	void LoadFile(void);
 
 	const std::vector<CEnemy *> *GetAllEnemy(void)const { return &m_vpEnemy; }
 	void Remove(CEnemy *DeadEnemy);
