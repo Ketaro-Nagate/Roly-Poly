@@ -14,6 +14,8 @@
 #include <assert.h>
 #include <algorithm>
 #include <string>
+#include <fstream>
+#include <sstream>
 #include "util.h"
 #include "enemy_bird.h"
 
@@ -135,20 +137,19 @@ void CEnemyManager::SetLevel(int nFrequency, int nMaxEnemy)
 //==================================================================================
 void CEnemyManager::LoadFile(void)
 {
-#if false
 	std::string line;		// 行データ
 	std::string label;		// ラベル
 	char equal;				// = テスト
 
 	ENEMY_INFO EnemyInfo;		// 一時保存用
-	D3DXVECTOR3 pos;
+	char acFileName[128] = "data\\MODEL\\Bird.x";
 
 	//====== ファイルデータを読み込み ======//
-	std::ifstream readfile("data\\TEXT\\ItemManager.txt");
+	std::ifstream readfile("data\\TEXT\\EnemyManager.txt");
 
-	if (readfile.is_open())
+	if (readfile.is_open() == false)
 	{
-		std::cout << "ファイルは開けています\n";
+		return;
 	}
 
 	// ファイルから読み込み
@@ -172,20 +173,21 @@ void CEnemyManager::LoadFile(void)
 			}
 
 			// アイテムの読み込み開始
-			if (label == "SET_PATTERN")
+			if (label == "SET_ENEMY")
 			{// 次の読み込みに備える
-				EnemyInfo.vpos.clear();
-				EnemyInfo.nNumItem = 0;
-				EnemyInfo.nIdx = -1;
+				EnemyInfo.pos = NULL_D3DXVECTOR3;
+				EnemyInfo.rot = NULL_D3DXVECTOR3;
+				EnemyInfo.move = D3DXVECTOR2(0.0f, 0.0f);
+				EnemyInfo.nType = 0;
+				EnemyInfo.nInterval = 0;
 				continue;
 			}
 
 			// アイテムの生成
-			if (label == "END_PATTERNSET")
+			if (label == "END_ENEMYSET")
 			{
 				// ここでセットパターンを登録する
-				m_vPattern.push_back(PatternInfo);
-				m_nNumPattern++;
+				m_vEnemyInfo.push_back(EnemyInfo);
 				continue;
 			}
 
@@ -197,18 +199,31 @@ void CEnemyManager::LoadFile(void)
 
 			if (label == "POS")
 			{// 位置を読み込み
-				iss >> pos.x >> pos.y >> pos.z;
-				PatternInfo.vpos.push_back(pos);		// 値を保存
-				PatternInfo.nNumItem++;					// カウント増
+				iss >> EnemyInfo.pos.x >> EnemyInfo.pos.y >> EnemyInfo.pos.z;
+			}
+			else if (label == "ROT")
+			{// 位置を読み込み
+				iss >> EnemyInfo.rot.x >> EnemyInfo.rot.y >> EnemyInfo.rot.z;
+			}
+			else if (label == "MOVE")
+			{// 位置を読み込み
+				iss >> EnemyInfo.move.x >> EnemyInfo.move.y;
+			}
+			else if (label == "TYPE")
+			{// 位置を読み込み
+				iss >> EnemyInfo.nType;
+			}
+			else if (label == "IDX")
+			{// 位置を読み込み
+				iss >> EnemyInfo.nInterval;
 			}
 			else if (label == "ID")
 			{// インデックスを読み込み
-				iss >> PatternInfo.nIdx;
+				iss >> EnemyInfo.nIdx;
 			}
 		}
 	}
 
 	// 読み込みファイルを閉じる
 	readfile.close();
-#endif
 }

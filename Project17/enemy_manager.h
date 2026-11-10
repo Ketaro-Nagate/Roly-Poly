@@ -32,7 +32,10 @@ public:
 	{
 		D3DXVECTOR3 pos;		// 位置
 		D3DXVECTOR3 rot;		// 角度
-		//CEnemy::ETYPE type;		// 種類
+		D3DXVECTOR2 move;		// 移動量.x / 上昇量.y
+		int nType;				// 動作タイプ
+		int nInterval;			// 探知動作のターンインターバル
+		int nIdx;				// 登録番号
 	}ENEMY_INFO;
 
 	CEnemyManager();
@@ -50,6 +53,7 @@ public:
 
 private:
 	std::vector<CEnemy*> m_vpEnemy;				// エネミーへのポインタ
+	std::vector<ENEMY_INFO> m_vEnemyInfo;		// エネミーへのポインタ
 	int m_nNumEnemy;							// 敵の数
 	int m_nCountDead;							// 死んだ敵の数
 	int m_nMaxEnemy;							// 呼び出す最大数

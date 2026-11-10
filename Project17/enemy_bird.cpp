@@ -34,7 +34,7 @@ CEnemyBird::CEnemyBird()
 	m_state = STATE_SERCH;
 	m_move = D3DXVECTOR2(0.0f, 0.0f);
 	m_nMoveCount = 0;
-	m_nTurnTime = UTURN_FRAME;
+	m_nTurnInterval = UTURN_FRAME;
 	m_bTurn = false;
 	m_sType = STYPE_BOX;
 	m_offpos = NULL_D3DXVECTOR3;
@@ -50,13 +50,13 @@ CEnemyBird::~CEnemyBird()
 //==================================================================================
 // 生成
 //==================================================================================
-CEnemyBird* CEnemyBird::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, char* pModelFile)
+CEnemyBird* CEnemyBird::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, char* pModelFile)
 {
 	// インスタンスを生成
 	CEnemyBird* pBird = new CEnemyBird;
 
 	// 初期化
-	pBird->Init(pos, rot, move, nType, pModelFile);
+	pBird->Init(pos, rot, move, nType, nInterval, pModelFile);
 
 	//ポインタを返す
 	return pBird;
@@ -65,7 +65,7 @@ CEnemyBird* CEnemyBird::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 mov
 //==================================================================================
 // 初期化
 //==================================================================================
-HRESULT CEnemyBird::Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, char* pModelFile)
+HRESULT CEnemyBird::Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, char* pModelFile)
 {
 	//CManager* pManager = CManager::GetManager();
 	CTexture* pTexture = CManager::GetManager()->GetTexture();
@@ -213,7 +213,7 @@ void CEnemyBird::Search_UTurn(void)
 	}
 
 	// カウント経過でUターン
-	if (m_nMoveCount % m_nTurnTime == 0)
+	if (m_nMoveCount % m_nTurnInterval == 0)
 	{
 		m_fUturnRot = RotCorrection(pRot->y + D3DX_PI);
 		m_bTurn = true;
@@ -283,7 +283,7 @@ void CEnemyBird::Search_Box(void)
 	}
 
 	// カウント経過で角で曲がる
-	if (m_nMoveCount % m_nTurnTime == 0)
+	if (m_nMoveCount % m_nTurnInterval == 0)
 	{
 		m_fUturnRot = RotCorrection(pRot->y + HALF_PI);
 		m_bTurn = true;

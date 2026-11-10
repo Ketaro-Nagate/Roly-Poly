@@ -129,11 +129,11 @@ HRESULT CGame::Init(CScene::MODE mode)
 
 
 	char ac[128] = "data\\MODEL\\Bird.x";
-	CEnemyBird::Create(D3DXVECTOR3(-150.0f, 1.0f,250.0f), D3DXVECTOR3(0.0f, HALF_PI, 0.0f), D3DXVECTOR2(3.0f, 0.0f), 0, ac);
+	CEnemyBird::Create(D3DXVECTOR3(-150.0f, 1.0f,250.0f), D3DXVECTOR3(0.0f, HALF_PI, 0.0f), D3DXVECTOR2(3.0f, 0.0f), 0, 120, ac);
 
-	CEnemyBird::Create(D3DXVECTOR3(400.0f, 1.0f, 300.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(2.5f, 0.0f), 1, ac);
+	CEnemyBird::Create(D3DXVECTOR3(400.0f, 1.0f, 300.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(2.5f, 0.0f), 1, 180, ac);
 
-	CEnemyBird::Create(D3DXVECTOR3(600.0f, 1.0f, -700.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(1.5f, 0.0f), 2, ac);
+	CEnemyBird::Create(D3DXVECTOR3(600.0f, 1.0f, -700.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(1.5f, 0.0f), 2,60, ac);
 
 	return S_OK;
 }

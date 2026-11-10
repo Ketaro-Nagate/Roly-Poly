@@ -48,8 +48,8 @@ public:
 	CEnemyBird();
 	~CEnemyBird();
 
-	static CEnemyBird* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, char* pModelFile);
-	HRESULT Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, char* pModelFile);
+	static CEnemyBird* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, char* pModelFile);
+	HRESULT Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, char* pModelFile);
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
@@ -72,7 +72,7 @@ private:
 	D3DXVECTOR3 m_offpos;	// 位置のオフセット
 	D3DXVECTOR2 m_move;		// 移動量
 	int m_nMoveCount;		// 移動時間カウント
-	int m_nTurnTime;		// ターンまでの時間
+	int m_nTurnInterval;		// ターンまでの時間
 	bool m_bTurn;			// Uターン中か
 	float m_fUturnRot;		// Uターン先角度
 	SERCH_TYPE m_sType;		// 探すときの動き方
