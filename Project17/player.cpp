@@ -29,7 +29,7 @@
 #define SPEED			(0.5f)		// 移動速度
 #define SENSITIVITY		(0.04f)		// 回転慣性
 #define ROTATION_SPEED	(0.5f)		// 回転速度
-#define RADIUS			(20.0f)		// 半径
+#define RADIUS			(25.0f)		// 半径
 #define NUM_LIGHT		(3)			// ライトの数
 #define MAX_FIELD_RANGE	(750.0f)	// 移動範囲
 #define JUMP_HEIGHT		(50.0f)		// ジャンプ高さ
@@ -146,7 +146,7 @@ HRESULT CPlayer::Init(void)
 
 	D3DXMatrixIdentity(&m_mtxRot);
 
-	m_pos.y += 23.0f;
+	m_pos.y += 30.0f;
 	m_pos.z -= 500.0f;
 
 	// オービット生成

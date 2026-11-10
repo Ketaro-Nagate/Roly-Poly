@@ -169,20 +169,7 @@ void CEnemyBird::BirdRotation(void)
 	D3DXVECTOR3* pBirdPos = m_pBird->GetPosition();
 	D3DXVECTOR3* pBirdRot = m_pBird->GetRotation();
 
-	// ƒ|ƒŠƒSƒ“‚ÌˆÊ’u
-	D3DXVECTOR3 centerPos = m_pWarning->GetPosition();
-
-	// ’†S‚©‚çBird‚Ü‚Å‚Ì‹——£‚ðŽæ“¾
-	float xdist = 50.0f;
-	float zdist = 50.0f;
-
-	// ‰ñ“]Šp“x‚ðXV
-	pBirdRot->y += 0.03f;
-	pBirdRot->y = RotCorrection(pBirdRot->y);
-
-	// ’†S‚ðŽ²‚ÉBird‚ÌˆÊ’u‚ð‰ñ“]
-	pBirdPos->x = centerPos.x + xdist * cosf(-pBirdRot->y);
-	pBirdPos->z = centerPos.z + zdist * sinf(-pBirdRot->y);
+	
 }
 
 //==================================================================================

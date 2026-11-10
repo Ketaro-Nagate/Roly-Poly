@@ -14,6 +14,7 @@
 #include <assert.h>
 #include <algorithm>
 #include "util.h"
+#include "enemy_bird.h"
 
 //========================================================================
 // コンストラクタ
@@ -97,8 +98,7 @@ void CEnemyManager::Update(void)
 	// 生成タイミングを待機
 	if (m_nFrequency == m_nCountCreate)
 	{// 生成
-
-
+		//m_vpEnemy.push_back(CEnemyBird::Create())
 	}
 }
 
