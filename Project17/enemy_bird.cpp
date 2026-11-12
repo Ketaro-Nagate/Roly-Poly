@@ -50,7 +50,7 @@ CEnemyBird::~CEnemyBird()
 //==================================================================================
 // 生成
 //==================================================================================
-CEnemyBird* CEnemyBird::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, char* pModelFile)
+CEnemyBird* CEnemyBird::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, const char* pModelFile)
 {
 	// インスタンスを生成
 	CEnemyBird* pBird = new CEnemyBird;
@@ -65,7 +65,7 @@ CEnemyBird* CEnemyBird::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 mov
 //==================================================================================
 // 初期化
 //==================================================================================
-HRESULT CEnemyBird::Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, char* pModelFile)
+HRESULT CEnemyBird::Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, const char* pModelFile)
 {
 	//CManager* pManager = CManager::GetManager();
 	CTexture* pTexture = CManager::GetManager()->GetTexture();

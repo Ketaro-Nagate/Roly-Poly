@@ -59,6 +59,8 @@ void CEnemyManager::Init(int nFrequency, int nMaxEnemy)
 {
 	m_nFrequency = nFrequency;		// 生成頻度
 	m_nMaxEnemy = nMaxEnemy;		// 最大数
+
+	LoadFile();
 }
 
 //========================================================================
@@ -68,7 +70,7 @@ void CEnemyManager::Uninit(void)
 {
 	// 管理する敵を全消去
 	for (auto iter = m_vpEnemy.begin();
-		iter != m_vpEnemy.end();)
+		iter != m_vpEnemy.end(); ++iter)
 	{
 		if ((*iter) != nullptr)
 		{// イテレータ内のポインタがnullではないか
@@ -101,7 +103,16 @@ void CEnemyManager::Update(void)
 	// 生成タイミングを待機
 	if (m_nFrequency == m_nCountCreate)
 	{// 生成
-		//m_vpEnemy.push_back(CEnemyBird::Create());
+		for (auto it = m_vEnemyInfo.begin(); it != m_vEnemyInfo.end(); ++it)
+		{
+			m_vpEnemy.push_back(CEnemyBird::Create(
+				it->pos,
+				it->rot,
+				it->move,
+				it->nType,
+				it->nInterval,
+				m_sFileName.c_str()));
+		}
 	}
 }
 
@@ -197,6 +208,11 @@ void CEnemyManager::LoadFile(void)
 				continue;
 			}
 
+			if (label == "FILENAME")
+			{// ファイル名を読み込み
+				iss >> m_sFileName;
+			}
+
 			if (label == "POS")
 			{// 位置を読み込み
 				iss >> EnemyInfo.pos.x >> EnemyInfo.pos.y >> EnemyInfo.pos.z;
@@ -213,7 +229,7 @@ void CEnemyManager::LoadFile(void)
 			{// 位置を読み込み
 				iss >> EnemyInfo.nType;
 			}
-			else if (label == "IDX")
+			else if (label == "INTERVAL")
 			{// 位置を読み込み
 				iss >> EnemyInfo.nInterval;
 			}

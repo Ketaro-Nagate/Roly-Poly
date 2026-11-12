@@ -28,6 +28,7 @@ class CScore;
 class CLife;
 class CStartUI;
 class CItemManager;
+class CEnemyManager;
 
 //**********************************************************************************
 // クラス定義
@@ -59,17 +60,18 @@ public:
 	void EndScene(CScene::MODE nextmode);
 
 private:
-	CLight* m_pLight[3];		// ライト
-	CPlayer* m_pPlayer;			// プレイヤー
-	CProp* m_pProp;				// オブジェクト配置
-	CScore* m_pScore;			// スコア
-	bool m_bEnd;				// シーン終了
-	CScene::MODE m_NextScene;	// 次のシーンモード
-	bool m_bPause;				// 重力
-	CItemManager* m_pItemManager;	// アイテムマネージャー
-	CObject2D* m_food;			// スコアテクスチャ
-	CScore* m_timer;			// 残り時間
-	int m_nCntGame;				// 
+	CLight* m_pLight[3];				// ライト
+	CPlayer* m_pPlayer;					// プレイヤー
+	CProp* m_pProp;						// オブジェクト配置
+	CScore* m_pScore;					// スコア
+	bool m_bEnd;						// シーン終了
+	CScene::MODE m_NextScene;			// 次のシーンモード
+	bool m_bPause;						// 重力
+	CItemManager* m_pItemManager;		// アイテムマネージャー
+	CObject2D* m_food;					// スコアテクスチャ
+	CScore* m_timer;					// 残り時間
+	int m_nCntGame;						// 
+	CEnemyManager* m_pEnemyManager;		// 敵のマネージャ
 
 
 };

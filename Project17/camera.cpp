@@ -268,8 +268,8 @@ void CCamera::Control(CInputKeyboard* pKey)
 		}
 
 		//--- 視点に注視点を追わせる ---//
-		m_posV.x = m_posR.x - sinf(m_rot.y) * m_VRDistance;
-		m_posV.z = m_posR.z - cosf(m_rot.y) * m_VRDistance;
+		m_posV.x = m_posR.x - cosf(m_rot.x) * sinf(m_rot.y) * m_VRDistance;
+		m_posV.z = m_posR.z - cosf(m_rot.x) * cosf(m_rot.y) * m_VRDistance;
 		m_posV.y = m_posR.y + sinf(m_rot.x) * m_VRDistance;
 
 		// 視点⇔注視点距離調整

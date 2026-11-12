@@ -48,8 +48,8 @@ public:
 	CEnemyBird();
 	~CEnemyBird();
 
-	static CEnemyBird* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, char* pModelFile);
-	HRESULT Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, char* pModelFile);
+	static CEnemyBird* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval,const char* pModelFile);
+	HRESULT Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR2 move, int nType, int nInterval, const char* pModelFile);
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);

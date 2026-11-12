@@ -13,6 +13,7 @@
 #include "main.h"
 #include "enemy.h"
 #include <vector>
+#include <string>
 
 //**********************************************************************************
 // マクロ定義
@@ -59,6 +60,8 @@ private:
 	int m_nMaxEnemy;							// 呼び出す最大数
 	int m_nCountCreate;							// 生成までのカウンター
 	int m_nFrequency;							// 呼び出す頻度
+
+	std::string m_sFileName;
 
 };
 

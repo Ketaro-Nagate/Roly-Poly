@@ -20,6 +20,7 @@
 #include "enemy_bird.h"
 #include "item_manager.h"
 #include "object2D.h"
+#include "enemy_manager.h"
 
 //**********************************************************************************
 // マクロ定義
@@ -43,6 +44,7 @@ CGame::CGame():CScene(MODE_GAME)
 	m_food = nullptr;
 	m_timer = nullptr;
 	m_nCntGame = 0;
+	m_pEnemyManager = nullptr;
 }
 
 //==================================================================================
@@ -122,18 +124,23 @@ HRESULT CGame::Init(CScene::MODE mode)
 		m_timer->AddScore(90);
 	}
 
+	if (m_pEnemyManager == nullptr)
+	{
+		m_pEnemyManager = CEnemyManager::Create(120, 4);
+	}
+
 	CWall::Create(D3DXVECTOR3(0.0f, -250.0f, -750.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), D3DXVECTOR3(1500.0f, 500.0f, 0.0f), pTexture->GetAddress(CTexture::TEX_UNDER));		// 手前
 	CWall::Create(D3DXVECTOR3(-750.0f, -250.0f, 0.0f), D3DXVECTOR3(0.0f, HALF_PI, 0.0f), D3DXVECTOR3(1500.0f, 500.0f, 0.0f), pTexture->GetAddress(CTexture::TEX_UNDER));	// 左
 	CWall::Create(D3DXVECTOR3(750.0f, -250.0f, 0.0f), D3DXVECTOR3(0.0f, -HALF_PI, 0.0f), D3DXVECTOR3(1500.0f, 500.0f, 0.0f), pTexture->GetAddress(CTexture::TEX_UNDER));	// 右
 	CWall::Create(D3DXVECTOR3(0.0f, -250.0f, 750.0f), D3DXVECTOR3(0.0f, D3DX_PI, 0.0f), D3DXVECTOR3(1500.0f, 500.0f, 0.0f), pTexture->GetAddress(CTexture::TEX_UNDER));		// 奥
 
 
-	char ac[128] = "data\\MODEL\\Bird.x";
-	CEnemyBird::Create(D3DXVECTOR3(-150.0f, 1.0f,250.0f), D3DXVECTOR3(0.0f, HALF_PI, 0.0f), D3DXVECTOR2(3.0f, 0.0f), 0, 120, ac);
+	//char ac[128] = "data\\MODEL\\Bird.x";
+	//CEnemyBird::Create(D3DXVECTOR3(-150.0f, 1.0f,250.0f), D3DXVECTOR3(0.0f, HALF_PI, 0.0f), D3DXVECTOR2(3.0f, 0.0f), 0, 120, ac);
 
-	CEnemyBird::Create(D3DXVECTOR3(400.0f, 1.0f, 300.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(2.5f, 0.0f), 1, 180, ac);
+	//CEnemyBird::Create(D3DXVECTOR3(400.0f, 1.0f, 300.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(2.5f, 0.0f), 1, 180, ac);
 
-	CEnemyBird::Create(D3DXVECTOR3(600.0f, 1.0f, -700.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(1.5f, 0.0f), 2,60, ac);
+	//CEnemyBird::Create(D3DXVECTOR3(600.0f, 1.0f, -700.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(1.5f, 0.0f), 2,60, ac);
 
 	return S_OK;
 }
@@ -175,6 +182,15 @@ void  CGame::Uninit(void)
 		m_pItemManager = nullptr;
 	}
 
+	if (m_pEnemyManager != nullptr)
+	{
+		m_pEnemyManager->Uninit();
+
+		// インスタンス破棄
+		delete m_pEnemyManager;
+		m_pEnemyManager = nullptr;
+	}
+
 	// オブジェクトを破棄
 	CObject::ReleaseAll();
 
@@ -197,6 +213,7 @@ void  CGame::Update(void)
 	CInputKeyboard* pKey = pManager->GetInputKeyboard();
 
 	m_pItemManager->Update();
+	m_pEnemyManager->Update();
 
 	m_nCntGame++;
 	if (m_nCntGame % 60 == 0)
