@@ -4,11 +4,15 @@
 //  Author : NAGATE
 //
 //==================================================================================
+#ifndef _RANKING_H_
+#define _RAMKING_H_
+
 //**********************************************************************************
 // インクルードファイル
 //**********************************************************************************
 #include "main.h"
 #include<vector>
+#include "scene.h"
 #include "object2D.h"
 
 //**********************************************************************************
@@ -20,16 +24,17 @@ class CScore;
 //**********************************************************************************
 // クラス定義
 //**********************************************************************************
-class CRanking
+class CRanking : public CScene
 {
 public:
 	CRanking();
 	~CRanking();
 
-	void Init(void);
+	HRESULT Init(CScene::MODE mode);
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
+	void WriteRankingData(int nRankingData);
 
 private:
 	CTcpClient* m_pClient;				// ランキングサーバーのクライアント
@@ -38,3 +43,5 @@ private:
 	std::vector<CObject2D*>m_vpRank;	// スコア横順位表示
 	
 };
+
+#endif // !_RANKING_H_

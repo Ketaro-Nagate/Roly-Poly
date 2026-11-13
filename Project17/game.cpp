@@ -232,7 +232,7 @@ void  CGame::Update(void)
 	// エンター || フラグ検知で遷移
 	if (pKey->GetTrigger(DIK_RETURN))
 	{
-		m_NextScene = MODE_TITLE;
+		m_NextScene = MODE_RANKING;
 		pManager->SetMode(m_NextScene);
 	}
 	else if (m_bEnd == true)

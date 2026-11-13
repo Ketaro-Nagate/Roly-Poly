@@ -41,6 +41,7 @@ public:
 	{
 		MODE_TITLE = 0,
 		MODE_GAME,
+		MODE_RANKING,
 		MODE_MAX
 	}MODE;
 

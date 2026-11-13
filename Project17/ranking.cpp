@@ -1,6 +1,6 @@
 //==================================================================================
 //
-//   [.cpp]
+//  ランキングシーン [ranking.cpp]
 //  Author : NAGATE
 //
 //==================================================================================
@@ -14,7 +14,9 @@
 #include "score.h"
 #include "manager.h"
 #include "input.h"
-#include "scene.h"
+
+#include <fstream>
+#include <algorithm>
 
 //**********************************************************************************
 // マクロ定義
@@ -26,7 +28,7 @@
 //==================================================================================
 // コンストラクタ
 //==================================================================================
-CRanking::CRanking()
+CRanking::CRanking() :CScene(MODE_RANKING)
 {
 	m_pClient = nullptr;
 	m_pBg = nullptr;
@@ -42,7 +44,7 @@ CRanking::~CRanking()
 //==================================================================================
 // 初期化
 //==================================================================================
-void CRanking::Init(void)
+HRESULT CRanking::Init(CScene::MODE mode)
 {
 #ifndef _ONLINE_RANKING
 	// ランキングクライアント生成
@@ -76,6 +78,8 @@ void CRanking::Init(void)
 
 	// 表示スコアの生成
 	m_vpScore.push_back(CScore::Create(D3DXVECTOR3(320.0f, 200.0f, 0.0f), 200.0f, 50.0f, 5));
+
+	return S_OK;
 }
 
 //==================================================================================
@@ -83,6 +87,26 @@ void CRanking::Init(void)
 //==================================================================================
 void CRanking::Uninit(void)
 {
+	// 順位表示の削除
+	for (auto*& rank : m_vpRank)
+	{
+		if (rank != nullptr)
+		{
+			rank->Uninit();
+		}
+	}
+	m_vpRank.clear();
+
+	// スコア表示の削除
+	for (auto*& score : m_vpScore)
+	{
+		if (score != nullptr)
+		{
+			score->Uninit();
+		}
+	}
+	m_vpScore.clear();
+
 #ifndef _ONLINE_RANKING
 	// クライアント
 	if (m_pClient != nullptr)
@@ -116,5 +140,60 @@ void CRanking::Update(void)
 //==================================================================================
 void CRanking::Draw(void)
 {
+
+}
+
+//==================================================================================
+// ランキングデータの書き込み
+//==================================================================================
+void CRanking::WriteRankingData(int nRankingData)
+{
+	std::vector<int>vFiledata;
+
+	//====== ファイルデータを読み込み ======//
+	std::ifstream readfile("data\\ranking.txt");
+
+	int nData;		// 読み込んだ値を受け取る
+
+	// ファイルから読み込み
+	if (readfile.is_open())
+	{
+		while (readfile >> nData)
+		{
+			// 値を保存
+			vFiledata.push_back(nData);
+		}
+	}
+
+	// 最新の値もソートに組み込む
+	vFiledata.push_back(nRankingData);
+
+	// 読み込みファイルを閉じる
+	readfile.close();
+
+	//====== ランキング更新処理 ======//
+	std::sort(vFiledata.begin(), vFiledata.end(), std::greater<int>());
+
+	//====== データを書き出す ======//
+	std::ofstream writefile("data\\TEXT\\Ranking.txt");		// 書き出し用ファイル
+
+	// 最小の値を削除(resize()を覚えよう！)
+	if (vFiledata.size() > 5)
+	{
+		vFiledata.resize(5);
+	}
+
+	// ファイルに出力
+	if (writefile.is_open())
+	{
+		for (auto score : vFiledata)
+		{
+			// 数値 + 改行
+			writefile << score << std::endl;
+		}
+	}
+
+	// ファイルクローズ
+	writefile.close();
 
 }

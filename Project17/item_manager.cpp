@@ -204,13 +204,6 @@ void CItemManager::CallPattern(int nNum)
 			}
 		}
 
-
-		// 指定パターンのアイテムを生成
-		/*for (int nCnt = 0; nCnt < m_vPattern[nRand].nNumItem; nCnt++)
-		{
-			m_vpItem.push_back(CItem::Create(m_vPattern[nRand].vpos[nCnt], NULL_D3DXVECTOR3, "data\\MODEL\\food.x"));
-		}*/
-
 		// 指定パターンのアイテムを生成
 		for (int nCnt = 0; nCnt < m_vPattern[nRand].nNumItem; nCnt++)
 		{

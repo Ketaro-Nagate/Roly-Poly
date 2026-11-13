@@ -11,6 +11,7 @@
 #include "scene.h"
 #include "game.h"
 #include "title.h"
+#include "ranking.h"
 
 //**********************************************************************************
 // マクロ定義
@@ -78,6 +79,10 @@ CScene* CScene::Create(MODE mode)
 
 	case MODE_GAME:				// ゲームシーン生成
 		pScene = new CGame;
+		break;
+
+	case MODE_RANKING:			// ランキングシーン生成
+		pScene = new CRanking;
 		break;
 	}
 

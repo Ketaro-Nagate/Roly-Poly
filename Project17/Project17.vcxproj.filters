@@ -275,9 +275,6 @@
     <ClInclude Include="object_ball.h">
       <Filter>ヘッダー ファイル\gameobject</Filter>
     </ClInclude>
-    <ClInclude Include="ranking.h">
-      <Filter>ヘッダー ファイル\systemobject</Filter>
-    </ClInclude>
     <ClInclude Include="tcp_client.h">
       <Filter>ヘッダー ファイル\systemobject</Filter>
     </ClInclude>
@@ -286,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="item_manager.h">
       <Filter>ヘッダー ファイル\gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="ranking.h">
+      <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

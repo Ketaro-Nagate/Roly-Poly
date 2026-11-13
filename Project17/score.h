@@ -37,6 +37,7 @@ public:
 	void AddScore(int nAdd);
 	void SetDraw(bool bDraw) { m_bUnDraw = bDraw; }
 	void SetColor(D3DXCOLOR col);
+	int GetScore(void) { return m_nScore; }
 
 private:
 	CNumber* m_aNumber[MAX_NUMBER];			// ナンバーへのポインタ
