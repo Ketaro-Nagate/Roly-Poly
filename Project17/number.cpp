@@ -55,7 +55,7 @@ HRESULT CNumber::Load(void)
 	LPDIRECT3DDEVICE9 pDevice = Renderer->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data\\TEXTURE\\number000.png", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, "data\\TEXTURE\\number001.png", &m_pTexture);
 
 	return S_OK;
 }

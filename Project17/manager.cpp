@@ -71,13 +71,18 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	if (m_pTexture == nullptr)
 	{
 		m_pTexture = CTexture::GetInstance();
-		m_pTexture->Register("data\\TEXTURE\\0_effect000.jpg");		// エフェクト
-		m_pTexture->Register("data\\TEXTURE\\wall004.png");			// 壁
-		m_pTexture->Register("data\\TEXTURE\\field_001.png");		// 床
-		m_pTexture->Register("data\\TEXTURE\\warning_001.png");		// 敵の警告表示
-		m_pTexture->Register("data\\TEXTURE\\title.png");			// タイトルロゴ
-		m_pTexture->Register("data\\TEXTURE\\under.png");			// 地面
-		m_pTexture->Register("data\\TEXTURE\\food.png");			// 地面
+		m_pTexture->Register("data\\TEXTURE\\0_effect000.jpg");			// エフェクト
+		m_pTexture->Register("data\\TEXTURE\\wall004.png");				// 壁
+		m_pTexture->Register("data\\TEXTURE\\field_001.png");			// 床
+		m_pTexture->Register("data\\TEXTURE\\warning_001.png");			// 敵の警告表示
+		m_pTexture->Register("data\\TEXTURE\\title.png");				// タイトルロゴ
+		m_pTexture->Register("data\\TEXTURE\\under.png");				// 地面
+		m_pTexture->Register("data\\TEXTURE\\food.png");				// 取得アイテム
+		m_pTexture->Register("data\\TEXTURE\\ranking_1_000.png");		// 順位表示_1
+		m_pTexture->Register("data\\TEXTURE\\ranking_2_000.png");		// 順位表示_2
+		m_pTexture->Register("data\\TEXTURE\\ranking_3_000.png");		// 順位表示_3
+		m_pTexture->Register("data\\TEXTURE\\ranking_4_000.png");		// 順位表示_4
+		m_pTexture->Register("data\\TEXTURE\\ranking_5_000.png");		// 順位表示_5
 	}
 
 	//--- キーボードインスタンス生成・初期化 ---//
@@ -111,7 +116,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	//--- シーンを生成 ---//
 	if (m_pScene == nullptr)
 	{
-		m_pScene = CScene::Create(CScene::MODE_TITLE);
+		m_pScene = CScene::Create(CScene::MODE_RANKING);
 	}
 	
 	return S_OK;

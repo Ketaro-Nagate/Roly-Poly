@@ -62,6 +62,9 @@ public:
 	void SetMode(CScene::MODE mode);
 	CScene::MODE GetMode(void);
 
+	void SetScore(int nScore) { m_nScore = nScore; }
+	int GetScore(void) { return m_nScore; }
+
 private:
 	CRenderer* m_pRenderer;				// レンダラーインスタンスへのポインタ
 	CInputKeyboard* m_pInputKeyboard;	// キーボードインスタンスへのポインタ
@@ -75,6 +78,8 @@ private:
 
 	bool m_bPause;						// ポーズ中か
 	bool m_bInGame;						// リスタート
+
+	int m_nScore;						// ゲームからランキングへの受け渡し用
 };
 
 #endif // !_MANAGER_H_

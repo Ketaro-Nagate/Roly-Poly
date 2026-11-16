@@ -30,7 +30,7 @@ public:
 	CProp();
 	~CProp();
 
-	void Load(void);
+	void Load(const char* cpFilePath);
 	void Unload(void);
 	void LoadProp(FILE* pFile);
 

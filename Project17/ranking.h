@@ -20,6 +20,7 @@
 //**********************************************************************************
 class CTcpClient;
 class CScore;
+class CProp;
 
 //**********************************************************************************
 // クラス定義
@@ -39,6 +40,7 @@ public:
 private:
 	CTcpClient* m_pClient;				// ランキングサーバーのクライアント
 	CObject2D* m_pBg;					// 背景テクスチャ
+	CProp* m_pProp;						// 背景になるオブジェクト配置
 	std::vector<CScore*>m_vpScore;		// 表示スコア
 	std::vector<CObject2D*>m_vpRank;	// スコア横順位表示
 	

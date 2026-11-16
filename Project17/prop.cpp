@@ -45,13 +45,13 @@ CProp::~CProp()
 //==================================================================================
 // ファイルロード
 //==================================================================================
-void CProp::Load(void)
+void CProp::Load(const char* cpFilePath)
 {
 	char aStr[MAX_PATH];					// ファイル入力用
 
 	// ファイル開封
 	FILE *pFile;
-	pFile = fopen("data\\TEXT\\MapProp.txt", "r");
+	pFile = fopen(cpFilePath, "r");
 
 	// ファイル読み込み失敗
 	if (pFile == nullptr)

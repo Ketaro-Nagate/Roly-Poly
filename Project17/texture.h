@@ -34,6 +34,11 @@ public:
 		TEX_TITLE,			// タイトルロゴ
 		TEX_UNDER,			// 地面の中
 		TEX_FOOD,			// ごはん
+		TEX_RANK_1,			// 順位表示_1
+		TEX_RANK_2,			// 順位表示_1
+		TEX_RANK_3,			// 順位表示_1
+		TEX_RANK_4,			// 順位表示_1
+		TEX_RANK_5,			// 順位表示_1
 		TEX_MAX
 	}TEXNUM;
 

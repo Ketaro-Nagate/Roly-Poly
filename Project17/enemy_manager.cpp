@@ -67,22 +67,7 @@ void CEnemyManager::Init(int nFrequency, int nMaxEnemy)
 // 終了
 //========================================================================
 void CEnemyManager::Uninit(void)
-{
-	// 管理する敵を全消去
-	for (auto iter = m_vpEnemy.begin();
-		iter != m_vpEnemy.end(); ++iter)
-	{
-		if ((*iter) != nullptr)
-		{// イテレータ内のポインタがnullではないか
-			// 敵の終了処理
-			(*iter)->Uninit();
-		}
-
-		// 自身のvectorからの消去
-		//iter = m_vpEnemy.erase(iter);
-	}
-
-	// vectorを全消去
+{ // vectorを全消去
 	m_vpEnemy.clear();
 
 	// カウンターを０にする

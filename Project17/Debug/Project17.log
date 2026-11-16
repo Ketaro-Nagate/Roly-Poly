@@ -1,9 +1,2 @@
-﻿  game.cpp
-  item.cpp
-  manager.cpp
-  object_ball.cpp
-  object_cube.cpp
-  ranking.cpp
-  score.cpp
-  コードを生成中...
+﻿  manager.cpp
   Project17.vcxproj -> C:\2WDW\018\02_開発環境\Roly-Poly\Project17\Project17.exe

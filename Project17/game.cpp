@@ -87,7 +87,7 @@ HRESULT CGame::Init(CScene::MODE mode)
 	if (m_pProp == nullptr)
 	{
 		m_pProp = new CProp;
-		m_pProp->Load();
+		m_pProp->Load("data\\TEXT\\MapProp.txt");
 	}
 
 	//--- プレイヤーの生成 ---//
@@ -150,6 +150,10 @@ HRESULT CGame::Init(CScene::MODE mode)
 //==================================================================================
 void  CGame::Uninit(void)
 {
+	// マネージャーに今回のスコアを渡す
+	CManager::GetManager()->SetScore(m_pScore->GetScore());
+
+	//==================== 破棄 =========================//
 	for (int nCntLight = 0; nCntLight < NUM_LIGHT; nCntLight++)
 	{
 		if (m_pLight[nCntLight] != nullptr)
@@ -225,7 +229,7 @@ void  CGame::Update(void)
 	{
 		if (m_pProp->GetDeath() == m_pProp->GetCreateModel())
 		{
-			m_pProp->Load();
+			m_pProp->Load("data\\TEXT\\MapProp.txt");
 		}
 	}
 

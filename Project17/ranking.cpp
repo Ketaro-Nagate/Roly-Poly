@@ -14,6 +14,7 @@
 #include "score.h"
 #include "manager.h"
 #include "input.h"
+#include "texture.h"
 
 #include <fstream>
 #include <algorithm>
@@ -61,6 +62,7 @@ HRESULT CRanking::Init(CScene::MODE mode)
 	}
 #endif // !_ONLINE_RANKING
 	 
+#if 0
 	// 背景生成
 	if (m_pBg == nullptr)
 	{
@@ -68,16 +70,44 @@ HRESULT CRanking::Init(CScene::MODE mode)
 		m_pBg = CObject2D::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f), 1280.0f, 720.0f);
 
 		// テクスチャ割り当て
-		
+		m_pBg->BindTexture(CManager::GetManager()->GetTexture()->GetAddress(0));
 	}
+#endif // 0
 
-	// テキストファイルからスコア読み込み
+	CTexture* pTex = CManager::GetManager()->GetTexture();			// テクスチャへのポインタ
+
+	// テキストファイルからスコア読み込みと更新
+	WriteRankingData(CManager::GetManager()->GetScore());
+
+	// 最新スコアは使用したら消しておく
+	CManager::GetManager()->SetScore(0);
+
 
 	// 順位表示の生成
-	m_vpRank.push_back(CObject2D::Create(D3DXVECTOR3(320.0f,100.0f, 0.0f),50.0f, 50.0f));
+	/*m_vpRank.push_back(CObject2D::Create(D3DXVECTOR3(320.0f, 300.0f, 0.0f), 150.0f, 150.0f));
+	m_vpRank[0]->BindTexture(pTex->GetAddress(CTexture::TEX_RANK_1));*/
 
-	// 表示スコアの生成
-	m_vpScore.push_back(CScore::Create(D3DXVECTOR3(320.0f, 200.0f, 0.0f), 200.0f, 50.0f, 5));
+	for (int nCnt = 0; nCnt < 5; nCnt++)
+	{
+		// 順位表示の生成
+		m_vpRank.push_back(CObject2D::Create(
+			D3DXVECTOR3(200.0f,
+						SCREEN_HEIGHT * 0.3f + nCnt * 100,
+						0.0f),
+						120.0f,
+						120.0f));
+
+		m_vpRank[nCnt]->BindTexture(pTex->GetAddress(CTexture::TEX_RANK_1 + nCnt));
+
+		// 表示スコアの生成
+		m_vpScore.push_back(CScore::Create(
+			D3DXVECTOR3(SCREEN_WIDTH * 0.4f,				// x座標
+						SCREEN_HEIGHT * 0.3f + nCnt * 100,	// y座標
+						0.0f),								// z座標
+						60.0f,								// 幅
+						60.0f,								// 高さ
+						5));								// 桁数
+	}
 
 	return S_OK;
 }
@@ -87,26 +117,6 @@ HRESULT CRanking::Init(CScene::MODE mode)
 //==================================================================================
 void CRanking::Uninit(void)
 {
-	// 順位表示の削除
-	for (auto*& rank : m_vpRank)
-	{
-		if (rank != nullptr)
-		{
-			rank->Uninit();
-		}
-	}
-	m_vpRank.clear();
-
-	// スコア表示の削除
-	for (auto*& score : m_vpScore)
-	{
-		if (score != nullptr)
-		{
-			score->Uninit();
-		}
-	}
-	m_vpScore.clear();
-
 #ifndef _ONLINE_RANKING
 	// クライアント
 	if (m_pClient != nullptr)
@@ -151,7 +161,7 @@ void CRanking::WriteRankingData(int nRankingData)
 	std::vector<int>vFiledata;
 
 	//====== ファイルデータを読み込み ======//
-	std::ifstream readfile("data\\ranking.txt");
+	std::ifstream readfile("data\\TEXT\\Ranking.txt");
 
 	int nData;		// 読み込んだ値を受け取る
 
