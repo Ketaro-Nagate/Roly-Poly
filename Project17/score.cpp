@@ -111,8 +111,8 @@ void CScore::Update(void)
 {
 	CInputKeyboard* pKey = CManager::GetManager()->GetInputKeyboard();
 
-	if (pKey->GetTrigger(DIK_F1))
-		m_bUnDraw ^= true;
+	/*if (pKey->GetTrigger(DIK_F1))
+		m_bUnDraw ^= true;*/
 
 	for (int nCount = 0; nCount < m_nDigit; nCount++)
 	{

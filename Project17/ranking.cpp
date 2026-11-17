@@ -75,17 +75,14 @@ HRESULT CRanking::Init(CScene::MODE mode)
 #endif // 0
 
 	CTexture* pTex = CManager::GetManager()->GetTexture();			// テクスチャへのポインタ
-
-	// テキストファイルからスコア読み込みと更新
-	WriteRankingData(CManager::GetManager()->GetScore());
-
-	// 最新スコアは使用したら消しておく
-	CManager::GetManager()->SetScore(0);
-
-
-	// 順位表示の生成
-	/*m_vpRank.push_back(CObject2D::Create(D3DXVECTOR3(320.0f, 300.0f, 0.0f), 150.0f, 150.0f));
-	m_vpRank[0]->BindTexture(pTex->GetAddress(CTexture::TEX_RANK_1));*/
+																																	
+	// 背景の生成
+	if (m_pBg == nullptr)
+	{
+		m_pBg = CObject2D::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f), SCREEN_WIDTH, SCREEN_HEIGHT);
+		m_pBg->BindTexture(pTex->GetAddress(CTexture::TEX_RANK_BG));
+		m_pBg->SetColor(D3DXCOLOR(1.0f,1.0f,1.0f,0.5f));
+	}
 
 	for (int nCnt = 0; nCnt < 5; nCnt++)
 	{
@@ -108,6 +105,13 @@ HRESULT CRanking::Init(CScene::MODE mode)
 						60.0f,								// 高さ
 						5));								// 桁数
 	}
+
+
+	// テキストファイルからスコア読み込みと更新
+	WriteRankingData(CManager::GetManager()->GetScore());
+
+	// 最新スコアは使用したら消しておく
+	CManager::GetManager()->SetScore(0);
 
 	return S_OK;
 }
@@ -196,10 +200,16 @@ void CRanking::WriteRankingData(int nRankingData)
 	// ファイルに出力
 	if (writefile.is_open())
 	{
+		int nCntScore = 0;
+
 		for (auto score : vFiledata)
 		{
 			// 数値 + 改行
 			writefile << score << std::endl;
+
+			// 読み込んだ数値を入れる
+			m_vpScore[nCntScore]->AddScore(score);
+			nCntScore++;
 		}
 	}
 

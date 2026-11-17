@@ -41,7 +41,7 @@ CGame::CGame():CScene(MODE_GAME)
 	m_NextScene = CScene::MODE_GAME;
 	m_bPause = false;
 	m_pItemManager = nullptr;
-	m_food = nullptr;
+	m_pScoreTex = nullptr;
 	m_timer = nullptr;
 	m_nCntGame = 0;
 	m_pEnemyManager = nullptr;
@@ -96,13 +96,6 @@ HRESULT CGame::Init(CScene::MODE mode)
 		m_pPlayer = CPlayer::Create();
 	}
 
-	//--- スコアUIの生成 ---//
-	if (m_pScore == nullptr)
-	{
-		m_pScore = CScore::Create(D3DXVECTOR3(1080.0f, 50.0f, 0.0f), 20.0f, 20.0f, 5);
-		m_pScore->SetColor(D3DXCOLOR(0.73f, 0.52f, 0.04f, 1.0f));
-	}
-
 	//--- アイテムマネージャーの生成 ---//
 	if (m_pItemManager == nullptr)
 	{
@@ -110,20 +103,30 @@ HRESULT CGame::Init(CScene::MODE mode)
 		m_pItemManager->Init();
 	}
 
-	if (m_food == nullptr)
+	//--- スコアUIの生成 ---//
+	if (m_pScore == nullptr)
 	{
-		m_food = CObject2D::Create(D3DXVECTOR3(1000.0f, 40.0f, 0.0f), 70.0f, 70.0f);
-		m_food->BindTexture(pTexture->GetAddress(CTexture::TEX_FOOD));
+		m_pScore = CScore::Create(D3DXVECTOR3(1080.0f, 50.0f, 0.0f), 20.0f, 20.0f, 5);
+		m_pScore->SetColor(D3DXCOLOR(0.73f, 0.52f, 0.04f, 1.0f));
+		m_pScore->AddScore(pManager->GetScore());
+	}
+
+	//--- 落ち葉のUIの生成 ---//
+	if (m_pScoreTex == nullptr)
+	{
+		m_pScoreTex = CObject2D::Create(D3DXVECTOR3(1000.0f, 40.0f, 0.0f), 70.0f, 70.0f);
+		m_pScoreTex->BindTexture(pTexture->GetAddress(CTexture::TEX_FOOD));
 	}
 
 	//--- 残り時間の生成 ---//
 	if (m_timer == nullptr)
 	{
-		m_timer = CScore::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, 50.0f, 0.0f), 20.0f, 20.0f, 5);
+		m_timer = CScore::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, 50.0f, 0.0f), 20.0f, 20.0f, 2);
 		m_timer->SetColor(D3DXCOLOR(0.73f, 0.52f, 0.04f, 1.0f));
-		m_timer->AddScore(90);
+		m_timer->AddScore(pManager->GetTimeLimit());
 	}
 
+	//--- エネミーマネージャーの生成 ---//
 	if (m_pEnemyManager == nullptr)
 	{
 		m_pEnemyManager = CEnemyManager::Create(120, 4);
@@ -134,13 +137,6 @@ HRESULT CGame::Init(CScene::MODE mode)
 	CWall::Create(D3DXVECTOR3(750.0f, -250.0f, 0.0f), D3DXVECTOR3(0.0f, -HALF_PI, 0.0f), D3DXVECTOR3(1500.0f, 500.0f, 0.0f), pTexture->GetAddress(CTexture::TEX_UNDER));	// 右
 	CWall::Create(D3DXVECTOR3(0.0f, -250.0f, 750.0f), D3DXVECTOR3(0.0f, D3DX_PI, 0.0f), D3DXVECTOR3(1500.0f, 500.0f, 0.0f), pTexture->GetAddress(CTexture::TEX_UNDER));		// 奥
 
-
-	//char ac[128] = "data\\MODEL\\Bird.x";
-	//CEnemyBird::Create(D3DXVECTOR3(-150.0f, 1.0f,250.0f), D3DXVECTOR3(0.0f, HALF_PI, 0.0f), D3DXVECTOR2(3.0f, 0.0f), 0, 120, ac);
-
-	//CEnemyBird::Create(D3DXVECTOR3(400.0f, 1.0f, 300.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(2.5f, 0.0f), 1, 180, ac);
-
-	//CEnemyBird::Create(D3DXVECTOR3(600.0f, 1.0f, -700.0f), NULL_D3DXVECTOR3, D3DXVECTOR2(1.5f, 0.0f), 2,60, ac);
 
 	return S_OK;
 }
@@ -219,18 +215,17 @@ void  CGame::Update(void)
 	m_pItemManager->Update();
 	m_pEnemyManager->Update();
 
+	// 制限時間タイマー加算
 	m_nCntGame++;
 	if (m_nCntGame % 60 == 0)
 	{
 		m_timer->AddScore(-1);
 	}
 
-	if (pKey->GetTrigger(DIK_F2))
+	// 制限時間経過で終了フラグ立てる
+	if (m_timer->GetScore() == 0)
 	{
-		if (m_pProp->GetDeath() == m_pProp->GetCreateModel())
-		{
-			m_pProp->Load("data\\TEXT\\MapProp.txt");
-		}
+		EndScene(MODE_RANKING);
 	}
 
 	// エンター || フラグ検知で遷移
@@ -241,6 +236,8 @@ void  CGame::Update(void)
 	}
 	else if (m_bEnd == true)
 	{
+		pManager->SetScore(m_pScore->GetScore());			// 獲得スコアを保存
+		pManager->SetTimeLimit(m_timer->GetScore());		// 残り制限時間
 		pManager->SetMode(m_NextScene);
 	}
 	

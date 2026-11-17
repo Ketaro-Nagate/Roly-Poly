@@ -65,6 +65,9 @@ public:
 	void SetScore(int nScore) { m_nScore = nScore; }
 	int GetScore(void) { return m_nScore; }
 
+	void SetTimeLimit(int nLimit) { m_nTimeLimit = nLimit; }
+	int GetTimeLimit(void) { return m_nTimeLimit; }
+
 private:
 	CRenderer* m_pRenderer;				// レンダラーインスタンスへのポインタ
 	CInputKeyboard* m_pInputKeyboard;	// キーボードインスタンスへのポインタ
@@ -80,6 +83,7 @@ private:
 	bool m_bInGame;						// リスタート
 
 	int m_nScore;						// ゲームからランキングへの受け渡し用
+	int m_nTimeLimit;					// 死んだときの保存用
 };
 
 #endif // !_MANAGER_H_

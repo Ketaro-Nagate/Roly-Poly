@@ -146,6 +146,7 @@ HRESULT CPlayer::Init(void)
 
 	D3DXMatrixIdentity(&m_mtxRot);
 
+	//========= 初期位置設定 =========//
 	m_pos.y += 30.0f;
 	m_pos.z -= 500.0f;
 

@@ -18,7 +18,7 @@
 // マクロ定義
 //**********************************************************************************
 #define NUM_LIGHT 3
-
+#define TIME_LIMIT_GAME		90					// マネージャーの時間制限に設定する値
 
 //==================================================================================
 // コンストラクタ
@@ -43,6 +43,10 @@ CTitle::~CTitle()
 HRESULT CTitle::Init(CScene::MODE mode)
 {
 	CObject::ReleaseAll();
+
+	// ゲームシーン用の時間・スコアリセット
+	CManager::GetManager()->SetScore(0);
+	CManager::GetManager()->SetTimeLimit(TIME_LIMIT_GAME);
 
 	// テクスチャへのポインタ取得
 	CManager* pManager = CManager::GetManager();

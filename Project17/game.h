@@ -68,7 +68,7 @@ private:
 	CScene::MODE m_NextScene;			// 次のシーンモード
 	bool m_bPause;						// 重力
 	CItemManager* m_pItemManager;		// アイテムマネージャー
-	CObject2D* m_food;					// スコアテクスチャ
+	CObject2D* m_pScoreTex;				// スコアテクスチャ
 	CScore* m_timer;					// 残り時間
 	int m_nCntGame;						// 
 	CEnemyManager* m_pEnemyManager;		// 敵のマネージャ

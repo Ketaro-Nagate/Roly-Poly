@@ -218,7 +218,7 @@ void CRenderer::Update(void)
 void CRenderer::Draw(void)
 {
 	//画面クリア(バックバッファとＺバッファのクリア)
-	m_pD3DDevice->Clear(0, NULL, (D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER), D3DCOLOR_RGBA(0, 0, 0, 255), 1.0f, 0);
+	m_pD3DDevice->Clear(0, NULL, (D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER), D3DCOLOR_RGBA(173, 216, 230, 255), 1.0f, 0);
 		CManager* pManager = CManager::GetManager();
 		CDebugProc* pDebugProc = pManager->GetDebugProc();
 		LPDIRECT3DDEVICE9 pDevice = GetDevice();

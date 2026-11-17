@@ -27,7 +27,11 @@
 //**********************************************************************************
 bool CManager::m_bFade = false;
 
-#define NUM_LIGHT 3		// ライトの数
+//**********************************************************************************
+// マクロ定義
+//**********************************************************************************
+#define NUM_LIGHT		3		// ライトの数
+#define TIME_LIMIT		90		// 制限時間
 
 //==================================================================================
 // コンストラクタ
@@ -43,6 +47,9 @@ CManager::CManager()
 	m_pCamera = nullptr;
 	m_pScene = nullptr;
 	m_pTexture = nullptr;
+
+	m_nScore = 0;
+	m_nTimeLimit = 0;
 }
 
 //==================================================================================
@@ -83,6 +90,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 		m_pTexture->Register("data\\TEXTURE\\ranking_3_000.png");		// 順位表示_3
 		m_pTexture->Register("data\\TEXTURE\\ranking_4_000.png");		// 順位表示_4
 		m_pTexture->Register("data\\TEXTURE\\ranking_5_000.png");		// 順位表示_5
+		m_pTexture->Register("data\\TEXTURE\\bg.png");					// ランキング背景
 	}
 
 	//--- キーボードインスタンス生成・初期化 ---//
@@ -234,7 +242,6 @@ void CManager::Update(void)
 	// DebugProcの表示切り替え
 	m_pDebugProc->PrintDebug("-----------------------------------\n");
 	m_pDebugProc->PrintDebug("F1 / デバッグ表示切り替え\n");
-	m_pDebugProc->PrintDebug("F2 / 取得アイテム再配置\n");
 	m_pDebugProc->PrintDebug("P  / ポーズ\n");
 }
 
@@ -306,11 +313,8 @@ void CManager::SetMode(CScene::MODE mode)
 	{
 		m_pScene->Uninit();
 
-#ifndef CSCENE_COBJECT			// オブジェクトが破棄
-
-#else							// マネージャー側で破棄
 		delete m_pScene;
-#endif // !CSCENE_COBJEKT
+
 		m_pScene = nullptr;
 	}
 

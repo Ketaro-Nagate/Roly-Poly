@@ -45,7 +45,7 @@ private:
 	int m_nNumModel;								// 登録モデル数
 	CObjectX* m_pObjectX[MAX_MODEL_SET];			// 生成されたモデルへのポインタ
 	int m_nCntModel;								// 生成されたモデルのカウント
-	int m_nCountDeath;		// 死んだアイテムを数える
+	int m_nCountDeath;								// 死んだアイテムを数える
 
 	D3DXVECTOR3 m_Playerpos;			// プレイヤーの位置
 	D3DXVECTOR3 m_Playerrot;			// プレイヤーの角度

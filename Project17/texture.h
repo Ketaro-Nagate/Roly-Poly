@@ -35,10 +35,11 @@ public:
 		TEX_UNDER,			// 地面の中
 		TEX_FOOD,			// ごはん
 		TEX_RANK_1,			// 順位表示_1
-		TEX_RANK_2,			// 順位表示_1
-		TEX_RANK_3,			// 順位表示_1
-		TEX_RANK_4,			// 順位表示_1
-		TEX_RANK_5,			// 順位表示_1
+		TEX_RANK_2,			// 順位表示_2
+		TEX_RANK_3,			// 順位表示_3
+		TEX_RANK_4,			// 順位表示_4
+		TEX_RANK_5,			// 順位表示_5
+		TEX_RANK_BG,		// ランキング背景
 		TEX_MAX
 	}TEXNUM;
 
